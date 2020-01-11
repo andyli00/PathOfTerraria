@@ -11,7 +11,7 @@ namespace PathOfTerraria
             return player.GetModPlayer<PathOfTerrariaPlayer>();
         }
 
-        public bool gmpEquipped = false;
+        //public bool gmpEquipped = false;
 
         public override void ResetEffects()
         {
@@ -25,7 +25,7 @@ namespace PathOfTerraria
 
         public override bool Shoot(Item item, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            if (gmpEquipped)
+            /*if (gmpEquipped)
             {
                 int numProjectiles = 3;
                 for (int i = 0; i < numProjectiles; i++)
@@ -33,13 +33,14 @@ namespace PathOfTerraria
                     Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(15)); //15 degrees of spread 
                     Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
                 }
-            }
+                return false;
+            }*/
             return base.Shoot(item, ref position, ref speedX, ref speedY, ref type, ref damage, ref knockBack);
         }
 
         private void ResetVariables()
         {
-            gmpEquipped = false;
+            //gmpEquipped = false;
         }
     }
 }
