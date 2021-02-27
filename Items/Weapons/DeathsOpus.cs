@@ -25,16 +25,19 @@ namespace PathOfTerraria.Items.Weapons
             item.UseSound = SoundID.Item5;
             item.width = 14; //use same dimensions as Marrow
             item.height = 32;
-            item.shoot = 1;
+            item.shoot = ProjectileID.WoodenArrowFriendly;
             item.shootSpeed = 6f;
             item.useAmmo = AmmoID.Arrow;
+            item.rare = ItemRarityID.Green;
+            item.value = Item.sellPrice(gold: 2);
+            item.knockBack = 2f;
         }
 
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod, "AlchemyOrb", 10);
             recipe.AddRecipeGroup("PathOfTerraria:EvilBows");
+            recipe.AddIngredient(ItemID.Bone, 30);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
