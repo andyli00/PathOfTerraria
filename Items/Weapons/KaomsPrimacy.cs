@@ -15,17 +15,17 @@ namespace PathOfTerraria.Items.Weapons
 
         public override void SetDefaults()
         {
-            item.damage = 100;
+            item.damage = 85;
             item.melee = true;
             item.width = 40;
             item.height = 40;
-            item.useTime = 11;
-            item.useAnimation = 11;
+            item.useTime = 25;
+            item.useAnimation = 25;
             item.axe = 40;
             item.useStyle = 1;
-            item.knockBack = 8;
-            item.value = Item.sellPrice(gold: 50);
-            item.rare = ItemRarityID.Red;
+            item.knockBack = 8f;
+            item.value = Item.sellPrice(gold: 30);
+            item.rare = ItemRarityID.Yellow;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
         }
@@ -33,16 +33,23 @@ namespace PathOfTerraria.Items.Weapons
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.LunarHamaxeSolar, 1);
-            recipe.AddIngredient(mod, "AlchemyOrb", 50);
-            recipe.AddIngredient(ItemID.HellstoneBar, 10);
+            recipe.AddIngredient(ItemID.MoltenHamaxe, 1);
+            recipe.AddIngredient(ItemID.Ectoplasm, 5);
+            //if calamity mod is present, requires scoria bars
+            Mod calamityMod = ModLoader.GetMod("CalamityMod");
+            if (calamityMod != null)
+            {
+                recipe.AddIngredient(calamityMod.ItemType("CruptixBar"), 8);
+            }
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
 
         public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
         {
-            if ((target.life - damage) <= target.lifeMax / 10) //if target is on 10% health or lower after being hit, kills target.
+            //if target is on 10% health or lower after being hit, kills target.
+            //does not work on bosses
+            if (!target.boss && (target.life - damage) <= target.lifeMax / 10)
             {
                 player.ApplyDamageToNPC(target, target.life, knockBack, 0, crit);
             }
