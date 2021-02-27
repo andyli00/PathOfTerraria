@@ -41,6 +41,7 @@ namespace PathOfTerraria.Items.Weapons
             {
                 recipe.AddIngredient(calamityMod.ItemType("CruptixBar"), 8);
             }
+            recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
