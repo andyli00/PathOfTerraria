@@ -49,7 +49,7 @@ namespace PathOfTerraria.Items.Weapons
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            int numProjectiles = 2 + Main.rand.Next(1); //2 or 3 projectiles
+            int numProjectiles = 2 + Main.rand.Next(2); //2 or 3 projectiles
             for (int i = 0; i < numProjectiles; i++)
             {
                 Vector2 perturbed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(10));

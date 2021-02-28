@@ -11,7 +11,7 @@ namespace PathOfTerraria
             return player.GetModPlayer<PathOfTerrariaPlayer>();
         }
 
-        //public bool gmpEquipped = false;
+        public bool farrulSetBonus;
 
         public override void ResetEffects()
         {
@@ -40,7 +40,7 @@ namespace PathOfTerraria
 
         private void ResetVariables()
         {
-            //gmpEquipped = false;
+            farrulSetBonus = false;
         }
     }
 }
