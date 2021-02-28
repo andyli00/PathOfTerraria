@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace PathOfTerraria
 {
@@ -12,35 +14,57 @@ namespace PathOfTerraria
         }
 
         public bool farrulSetBonus;
+        public bool maimed;
 
         public override void ResetEffects()
         {
-            ResetVariables();
+            farrulSetBonus = false;
+            maimed = false;
         }
 
         public override void UpdateDead()
         {
-            ResetVariables();
+            maimed = false;
         }
 
-        public override bool Shoot(Item item, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        public override void UpdateBadLifeRegen()
         {
-            /*if (gmpEquipped)
+            if (maimed)
             {
-                int numProjectiles = 3;
-                for (int i = 0; i < numProjectiles; i++)
+                if (player.lifeRegen > 0)
                 {
-                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(15)); //15 degrees of spread 
-                    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+                    player.lifeRegen = 0;
                 }
-                return false;
-            }*/
-            return base.Shoot(item, ref position, ref speedX, ref speedY, ref type, ref damage, ref knockBack);
+                player.lifeRegenTime = 0;
+                player.lifeRegen -= 10;
+            }
         }
 
-        private void ResetVariables()
+        public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
         {
-            farrulSetBonus = false;
+            if (farrulSetBonus && Main.rand.NextFloat() < 0.05f)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit)
+        {
+            if (farrulSetBonus)
+            {
+                target.AddBuff(BuffID.BoneJavelin, 5);
+                target.AddBuff(BuffID.Weak, 5);
+            }
+        }
+
+        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        {
+            if (farrulSetBonus)
+            {
+                target.AddBuff(BuffID.Bleeding, 5);
+                target.AddBuff(BuffID.Weak, 5);
+            }
         }
     }
 }
