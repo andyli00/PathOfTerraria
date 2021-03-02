@@ -33,8 +33,7 @@ namespace PathOfTerraria.Items.Armour
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.Robe, 1);
-            recipe.AddIngredient(mod, "AlchemyOrb", 5);
-            recipe.AddTile(TileID.Loom);
+            recipe.AddTile(TileID.TinkerersWorkbench);
         }
     }
 }
