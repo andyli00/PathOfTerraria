@@ -56,7 +56,7 @@ namespace PathOfTerraria.Items.Armour
         {
             player.setBonus = "Become the aspect of Farrul"
                 + "\nGain stealth while not moving"
-                + "\nMaim enemies on hit, slowing and bleeding them" 
+                + "\nPoison enemies on hit" 
                 + "\n5% chance to dodge hits";
             player.GetModPlayer<PathOfTerrariaPlayer>().farrulSetBonus = true;
         }
