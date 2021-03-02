@@ -11,7 +11,7 @@ namespace PathOfTerraria.Items.Weapons
 
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("Fires shards of ice" 
+            Tooltip.SetDefault("Fires shards of ice"
                 + "\nAfter a short distance, they accelerate and pierce");
         }
 
@@ -21,12 +21,12 @@ namespace PathOfTerraria.Items.Weapons
             item.magic = true;
             item.mana = 8;
             item.width = 24;
-            item.height = 28; 
+            item.height = 28;
             item.useTime = 17;
             item.useAnimation = 17;
             item.useStyle = ItemUseStyleID.HoldingOut;
             item.noMelee = true;
-            item.shoot = mod.ProjectileType("IceSpearProjectile");
+            item.shoot = ModContent.ProjectileType<Projectiles.IceSpearProjectile>();
             item.shootSpeed = 5f;
             item.autoReuse = true;
             item.rare = ItemRarityID.Pink;
@@ -56,59 +56,6 @@ namespace PathOfTerraria.Items.Weapons
                 Projectile.NewProjectile(position, perturbed, type, damage, knockBack, player.whoAmI);
             }
             return false;
-        }
-    }
-
-    class IceSpearProjectile : ModProjectile
-    {
-        public override string Texture => "Terraria/Projectile_" + ProjectileID.EnchantedBeam;
-
-        public override void SetDefaults()
-        {
-            projectile.width = 16;
-            projectile.height = 16;
-            projectile.alpha = 255;
-            projectile.magic = true;
-            projectile.friendly = true;
-            projectile.knockBack = 3;
-            projectile.light = 1f;
-        }
-
-        public override void AI()
-        {
-            if (projectile.ai[1] == 0f)
-            {
-                projectile.ai[1] = 1f;
-                Main.PlaySound(SoundID.Item8, projectile.position);
-            }
-
-            projectile.ai[0] += 1f;
-            //change forms after half a second
-            if (projectile.ai[0] == 30)
-            {
-                projectile.velocity *= 4;
-                projectile.maxPenetrate = 3;
-                projectile.penetrate = 3;
-                projectile.damage *= 2;
-                projectile.knockBack *= 2f;
-                for (int i = 0; i < 2; i++)
-                {
-                    Dust.NewDust(projectile.position, projectile.width, projectile.height, 92, 0f, 0f, 50, default(Color), 1.2f);
-                }
-                Main.PlaySound(SoundID.Item28, projectile.position);
-            }
-
-            for (int i = 0; i < 2; i++)
-            {
-                int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 92, projectile.velocity.X, projectile.velocity.Y, 50, default(Color), 1.2f);
-                Main.dust[dust].noGravity = true;
-                Main.dust[dust].velocity *= 0.3f;
-            }
-        }
-
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-        {
-            target.AddBuff(BuffID.Frostburn, 5 * 60);
         }
     }
 }

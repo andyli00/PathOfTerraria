@@ -21,7 +21,7 @@ namespace PathOfTerraria.Items.Weapons
             item.noMelee = true;
             item.useTime = 27; //'average' speed
             item.useAnimation = 27;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.UseSound = SoundID.Item5;
             item.width = 14; //use same dimensions as Marrow
             item.height = 32;

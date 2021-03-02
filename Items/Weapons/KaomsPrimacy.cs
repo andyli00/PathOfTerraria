@@ -22,7 +22,7 @@ namespace PathOfTerraria.Items.Weapons
             item.useTime = 25;
             item.useAnimation = 25;
             item.axe = 40;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.knockBack = 8f;
             item.value = Item.sellPrice(gold: 30);
             item.rare = ItemRarityID.Yellow;
