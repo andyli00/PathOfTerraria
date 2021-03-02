@@ -43,7 +43,7 @@ namespace PathOfTerraria.Items.Weapons
 
         public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
         {
-            if (damage > target.life)
+            if (damage >= target.life)
             {
                 int explosionDamage = damage + (int)(target.lifeMax * 0.05f);
                 Projectile.NewProjectile(target.position.X + target.width / 2f, target.position.Y + target.height / 2f, 0f, 0f, ModContent.ProjectileType<Projectiles.InfernalExplosion>(), explosionDamage, knockBack, player.whoAmI);
