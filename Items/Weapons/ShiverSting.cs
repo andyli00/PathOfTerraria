@@ -41,6 +41,10 @@ namespace PathOfTerraria.Items.Weapons
             {
                 recipe.AddIngredient(calamityMod.ItemType("CryoBar"), 8);
             }
+            else
+            {
+                recipe.AddIngredient(ItemID.HallowedBar, 8);
+            }
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
