@@ -11,6 +11,11 @@ namespace PathOfTerraria.Projectiles
 
         private int sporePodsCreated = 0;
 
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Scourge Arrow");
+        }
+
         public override void SetDefaults()
         {
             projectile.arrow = true;

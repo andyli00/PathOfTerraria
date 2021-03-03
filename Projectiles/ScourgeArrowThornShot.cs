@@ -9,6 +9,11 @@ namespace PathOfTerraria.Projectiles
     {
         public override string Texture => "Terraria/Projectile_" + ProjectileID.EatersBite;
 
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Thorn Arrow");
+        }
+
         public override void SetDefaults()
         {
             projectile.width = 14;
@@ -17,8 +22,9 @@ namespace PathOfTerraria.Projectiles
             projectile.ranged = true;
             projectile.arrow = true;
             projectile.scale = 0.75f;
-            //projectile.aiStyle = 1;
-            projectile.penetrate = -1;
+            //projectile.penetrate = -1;
+            drawOffsetX = -12;
+            drawOriginOffsetX = 12;
         }
 
         public override void AI()
