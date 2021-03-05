@@ -48,6 +48,7 @@ namespace PathOfTerraria.Projectiles
                 projectile.velocity.Y = 16f;
             }
 
+            //release a spore pod every few ticks, up to a max
             if (projectile.ai[0] % (ScourgeArrowCharge.TICKS_PER_STAGE / 2) == 0 && sporePodsCreated < Stages)
             {
                 sporePodsCreated++;

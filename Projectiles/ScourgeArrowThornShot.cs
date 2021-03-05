@@ -21,8 +21,6 @@ namespace PathOfTerraria.Projectiles
             projectile.friendly = true;
             projectile.ranged = true;
             projectile.arrow = true;
-            //drawOffsetX = -12;
-            //drawOriginOffsetX = 12;
         }
 
         public override void AI()
@@ -30,11 +28,11 @@ namespace PathOfTerraria.Projectiles
             int dust = Dust.NewDust(new Vector2(projectile.position.X + projectile.velocity.X, projectile.position.Y + projectile.velocity.Y), projectile.width, projectile.height, 75, projectile.velocity.X, projectile.velocity.Y, 100, default(Color), 3f * projectile.scale);
             Main.dust[dust].noGravity = true;
             projectile.rotation = projectile.velocity.ToRotation() + MathHelper.ToRadians(90);
-            if (++projectile.frameCounter >= 5)
+            /*if (++projectile.frameCounter >= 5)
             {
                 projectile.frameCounter = 0;
                 projectile.frame = ++projectile.frame % Main.projFrames[projectile.type];
-            }
+            }*/
         }
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)

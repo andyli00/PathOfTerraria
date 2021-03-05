@@ -23,8 +23,8 @@ namespace PathOfTerraria.Projectiles
 
         public override void AI()
         {
-            //dont want the thorn pods to move, but still need the velocity
-            //for the thorn shots that spawn
+            //dont want the thorn pods to move, but still need to store the velocity
+            //for the thorn shots that spawn. same with damage
             if (projectile.ai[0] == 0)
             {
                 initialVelocity = projectile.velocity;
@@ -36,6 +36,7 @@ namespace PathOfTerraria.Projectiles
             projectile.ai[0]++;
             DoDust();
 
+            //release thorn shots after a delay
             if (projectile.ai[0] == 15)
             {
                 Main.PlaySound(SoundID.Grass, projectile.position);

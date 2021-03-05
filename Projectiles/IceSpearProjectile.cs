@@ -48,7 +48,7 @@ namespace PathOfTerraria.Projectiles
                 projectile.knockBack *= 2f;
                 for (int i = 0; i < 2; i++)
                 {
-                    Dust.NewDust(projectile.position, projectile.width, projectile.height, 92, 0f, 0f, 50, default(Color), 1.2f);
+                    Dust.NewDust(projectile.position, projectile.width, projectile.height, 92, 0f, 0f, 50, default, 1.2f);
                 }
                 Main.PlaySound(SoundID.Item28, projectile.position);
             }

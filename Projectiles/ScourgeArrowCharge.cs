@@ -12,8 +12,8 @@ namespace PathOfTerraria.Projectiles
 
         //1 stage per fifth second
         public const int TICKS_PER_STAGE = 12;
-        public const int MAX_PODS = 5;
-        private const int MAX_CHARGE = MAX_PODS * TICKS_PER_STAGE;
+        public const int MAX_STAGES = 5;
+        private const int MAX_CHARGE = MAX_STAGES * TICKS_PER_STAGE;
 
         public override void SetDefaults()
         {
@@ -32,7 +32,7 @@ namespace PathOfTerraria.Projectiles
             set => projectile.localAI[0] = value;
         }
 
-        private float Shoot
+        private float Shot
         {
             get => projectile.localAI[1];
             set => projectile.localAI[1] = value;
@@ -52,7 +52,8 @@ namespace PathOfTerraria.Projectiles
             UpdatePlayer(player);
             UpdateCharge(player);
 
-            if (Shoot == 1f)
+            //release shot
+            if (Shot == 1f)
             {
                 Vector2 toCursor = Main.MouseWorld - player.Center;
                 toCursor.Normalize();
@@ -88,12 +89,13 @@ namespace PathOfTerraria.Projectiles
                     Main.PlaySound(SoundID.MaxMana, player.position);
                 }
             }
-            else if (Shoot == 0f) //release the shot
+            else if (Shot == 0f) //release the shot
             {
-                Shoot = 1f;
+                Shot = 1f;
             }
         }
 
+        //make the player point at the cursor
         private void UpdatePlayer(Player player)
         {
             int direction = Main.MouseWorld.X > player.position.X ? 1 : -1;
