@@ -6,8 +6,6 @@ namespace PathOfTerraria.Items.Weapons
 {
     class KaomsPrimacy : ModItem
     {
-        public override string Texture => "Terraria/Item_" + ItemID.LunarHamaxeSolar;
-
         public override void SetStaticDefaults()
         {
             Tooltip.SetDefault("Culls enemies that have 10% health or lower");

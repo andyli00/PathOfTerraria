@@ -1,5 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -7,8 +6,6 @@ namespace PathOfTerraria.Items.Weapons
 {
     class InfernalBlade : ModItem
     {
-        //public override string Texture => "Terraria/Item_" + ItemID.FieryGreatsword;
-
         public override void SetStaticDefaults()
         {
             Tooltip.SetDefault("Enemies explode on death, dealing damage based on their health");
