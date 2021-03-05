@@ -7,7 +7,7 @@ namespace PathOfTerraria.Items.Weapons
 {
     class InfernalBlade : ModItem
     {
-        public override string Texture => "Terraria/Item_" + ItemID.FieryGreatsword;
+        //public override string Texture => "Terraria/Item_" + ItemID.FieryGreatsword;
 
         public override void SetStaticDefaults()
         {

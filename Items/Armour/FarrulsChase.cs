@@ -37,6 +37,7 @@ namespace PathOfTerraria.Items.Armour
             recipe.AddIngredient(ItemID.TigerSkin, 1);
             recipe.AddIngredient(ItemID.FossilPants, 1);
             recipe.AddIngredient(ItemID.AdamantiteBar, 16);
+            recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
 
@@ -44,6 +45,7 @@ namespace PathOfTerraria.Items.Armour
             recipe.AddIngredient(ItemID.TigerSkin, 1);
             recipe.AddIngredient(ItemID.FossilPants, 1);
             recipe.AddIngredient(ItemID.TitaniumBar, 16);
+            recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

@@ -1,3 +1,4 @@
 displayName = Path of Terraria
 author = blechd
 version = 0.1
+modReferences = CalamityMod
