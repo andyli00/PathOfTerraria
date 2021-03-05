@@ -54,8 +54,7 @@ namespace PathOfTerraria.Projectiles
             for (int i = 0; i < 6; i++)
             {
                 Vector2 perturbedSpeed = projectile.velocity.RotatedByRandom(MathHelper.ToRadians(45));
-                int proj = Projectile.NewProjectile(newPos, perturbedSpeed, ModContent.ProjectileType<FrostBlade>(), damage, 5, projectile.owner);
-                Main.projectile[proj].ai[0] = 1f;
+                Projectile.NewProjectile(newPos, perturbedSpeed, ModContent.ProjectileType<FrostBlade>(), damage, 5, projectile.owner, ai0: 1f);
             }
         }
     }
