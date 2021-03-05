@@ -30,7 +30,7 @@ namespace PathOfTerraria.Items.Weapons
             item.useStyle = ItemUseStyleID.HoldingUp;
             item.shoot = ModContent.ProjectileType<Projectiles.BladeVortexBlade>();
             item.shootSpeed = 30f;
-            item.rare = ItemRarityID.Red;
+            item.rare = ItemRarityID.LightRed;
             item.UseSound = SoundID.Item84;
         }
 
