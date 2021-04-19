@@ -17,8 +17,8 @@ namespace PathOfTerraria.Items.Accessories
         public override void SetDefaults()
         {
             item.accessory = true;
-            //item.value
-            //item.rare
+            item.value = Item.buyPrice(gold: 25);
+            item.rare = ItemRarityID.Yellow;
         }
 
         public override void UpdateEquip(Player player)

@@ -42,6 +42,10 @@ namespace PathOfTerraria
             {
                 shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Convocation>());
             }
+            if (type == NPCID.Wizard && NPC.downedGolemBoss)
+            {
+                shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Accessories.ArcaneCloak>());
+            }
         }
     }
 }
