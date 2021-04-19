@@ -4,8 +4,8 @@ using Terraria.ModLoader;
 
 namespace PathOfTerraria.Items.Accessories
 {
-    public class KaruiCharge : ModItem //TODO prevent equipping both karui amulets at the same time
-    {
+    public class KaruiCharge : KaruiAmulet
+    { 
         public override string Texture => "Terraria/Item_" + ItemID.CrossNecklace;
 
         public override void SetStaticDefaults()

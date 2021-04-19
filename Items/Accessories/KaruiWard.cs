@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace PathOfTerraria.Items.Accessories
 {
-    public class KaruiWard : ModItem
+    public class KaruiWard : KaruiAmulet
     {
         public override string Texture => "Terraria/Item_" + ItemID.CrossNecklace;
 
