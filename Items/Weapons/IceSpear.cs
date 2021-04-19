@@ -30,6 +30,7 @@ namespace PathOfTerraria.Items.Weapons
             item.shootSpeed = 5f;
             item.autoReuse = true;
             item.rare = ItemRarityID.Pink;
+            item.value = Item.buyPrice(gold: 5);
         }
 
         public override void AddRecipes()

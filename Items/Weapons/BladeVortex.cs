@@ -31,6 +31,7 @@ namespace PathOfTerraria.Items.Weapons
             item.shoot = ModContent.ProjectileType<Projectiles.BladeVortexBlade>();
             item.shootSpeed = 30f;
             item.rare = ItemRarityID.LightRed;
+            item.value = Item.buyPrice(gold: 5);
             item.UseSound = SoundID.Item84;
         }
 
