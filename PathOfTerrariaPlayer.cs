@@ -14,14 +14,26 @@ namespace PathOfTerraria
         }
 
         public bool farrulSetBonus;
+        public bool arcaneCloak;
 
         public override void ResetEffects()
         {
             farrulSetBonus = false;
+            arcaneCloak = false;
         }
 
         public override void UpdateDead()
         {
+        }
+
+        public override void GetWeaponDamage(Item item, ref int damage)
+        {
+            if (arcaneCloak && item.magic)
+            {
+                float manaPercent = (float)player.statMana / player.statManaMax2;
+                //damage boost of 20% at max mana
+                damage += (int)(damage * manaPercent / 4);
+            }
         }
 
         public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
@@ -31,6 +43,24 @@ namespace PathOfTerraria
                 player.NinjaDodge();
                 return false;
             }
+
+            if (arcaneCloak)
+            {
+                //30% damage reduction
+                int reduction = (int)((float)damage * 0.3);
+                Main.NewText(damage + "," + reduction);
+
+                //if the damage reduction is more than the mana than the 
+                //player has left, consume the rest of player's mana
+                //otherwise, normal 30% reduction
+                if (reduction > player.statMana)
+                {
+                    reduction = player.statMana;
+                }
+                damage -= reduction;
+                player.statMana -= reduction;
+            }
+
             return true;
         }
 
