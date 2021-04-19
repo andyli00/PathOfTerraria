@@ -35,5 +35,13 @@ namespace PathOfTerraria
                 }
             }
         }*/
+
+        public override void SetupShop(int type, Chest shop, ref int nextSlot)
+        {
+            if (type == NPCID.WitchDoctor && Main.hardMode)
+            {
+                shop.item[nextSlot++].SetDefaults(ModContent.ItemType<Items.Convocation>());
+            }
+        }
     }
 }
