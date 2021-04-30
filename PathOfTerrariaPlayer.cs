@@ -48,7 +48,7 @@ namespace PathOfTerraria
             {
                 //30% damage reduction
                 int reduction = (int)((float)damage * 0.3);
-                Main.NewText(damage + "," + reduction);
+                //Main.NewText(damage + "," + reduction);
 
                 //if the damage reduction is more than the mana than the 
                 //player has left, consume the rest of player's mana
@@ -59,6 +59,7 @@ namespace PathOfTerraria
                 }
                 damage -= reduction;
                 player.statMana -= reduction;
+                player.ManaEffect(-reduction);
             }
 
             return true;
