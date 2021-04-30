@@ -86,7 +86,14 @@ namespace PathOfTerraria.Projectiles
                 projectile.Center = player.Center;
                 if (IsMaxCharge)
                 {
-                    Main.PlaySound(SoundID.MaxMana, player.position);
+                    Main.PlaySound(SoundID.MaxMana, player.position); 
+                    for (int i = 0; i < 5; i++)
+                    {
+                        int dust = Dust.NewDust(player.position, player.width, player.height, 45, 0f, 0f, 255, default, Main.rand.Next(20, 26) * 0.1f);
+                        Main.dust[dust].noLight = true;
+                        Main.dust[dust].noGravity = true;
+                        Main.dust[dust].velocity *= 0.5f;
+                    }
                 }
             }
             else if (Shot == 0f) //release the shot
