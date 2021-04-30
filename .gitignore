@@ -4,3 +4,4 @@ obj/*
 properties/*
 *.csproj
 *.sln
+*.htm
