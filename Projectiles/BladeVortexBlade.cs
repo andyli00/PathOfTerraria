@@ -32,11 +32,22 @@ namespace PathOfTerraria.Projectiles
 
         public override void AI()
         {
-            spinningPoint = new Vector2(projectile.ai[0], projectile.ai[1]);
-            projectile.rotation = projectile.velocity.ToRotation() + MathHelper.ToRadians(45);
+            Player myOwner = Main.player[projectile.owner];
+
+            //make sure the rotation direction is correct
+            spinningPoint = myOwner.Center;
             Vector2 toCenter = spinningPoint - projectile.Center;
             toCenter.Normalize();
-            projectile.velocity = (toCenter * projectile.velocity.Length()).RotatedBy(MathHelper.ToRadians(75));
+            //TODO for some reason projectiles slowly get farther away from the player and i dont know why
+            projectile.velocity = (toCenter * projectile.velocity.Length()).RotatedBy(MathHelper.PiOver2);
+
+            //make the projectile visually face the right direction
+            projectile.rotation = projectile.velocity.ToRotation() + MathHelper.PiOver4;
+
+            //make sure the rotation stays constant even if the player is moving
+            projectile.velocity += myOwner.velocity;
+            projectile.velocity.Normalize();
+            projectile.velocity *= 30;
         }
     }
 }

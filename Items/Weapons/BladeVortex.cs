@@ -14,7 +14,7 @@ namespace PathOfTerraria.Items.Weapons
 
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("Creates a storm of ethereal blades");
+            Tooltip.SetDefault("Creates a storm of ethereal blades around the player");
         }
 
         public override void SetDefaults()
@@ -40,6 +40,7 @@ namespace PathOfTerraria.Items.Weapons
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.SpellTome);
             recipe.AddIngredient(ItemID.FlyingKnife);
+            recipe.AddIngredient(ItemID.Ectoplasm, 5);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
@@ -50,12 +51,12 @@ namespace PathOfTerraria.Items.Weapons
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             Vector2 velocity = new Vector2(speedX, speedY);
-            Vector2 spinningPoint = Main.MouseWorld;
             int numBlades = 5;
             for (int i = 0; i < numBlades; i++)
             {
-                Vector2 startPoint = spinningPoint + (velocity * Distance).RotatedByRandom(MathHelper.Pi);
-                Projectile.NewProjectile(startPoint, velocity.RotatedBy(MathHelper.PiOver2), type, damage, knockBack, Main.myPlayer, ai0: spinningPoint.X, ai1: spinningPoint.Y);
+                float distance = Distance;
+                Vector2 startPoint = player.Center + (velocity * distance);
+                Projectile.NewProjectile(startPoint, velocity.RotatedBy(MathHelper.PiOver2), type, damage, knockBack, Main.myPlayer, ai0: distance);
             }
             return false;
         }
