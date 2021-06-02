@@ -31,8 +31,8 @@ namespace PathOfTerraria
             if (arcaneCloak && item.magic)
             {
                 float manaPercent = (float)player.statMana / player.statManaMax2;
-                //damage boost of 20% at max mana
-                damage += (int)(damage * manaPercent / 4);
+                //multiplicative damage boost of 10% at max mana
+                damage += (int)(damage * manaPercent / 10);
             }
         }
 
@@ -48,7 +48,6 @@ namespace PathOfTerraria
             {
                 //30% damage reduction
                 int reduction = (int)((float)damage * 0.3);
-                //Main.NewText(damage + "," + reduction);
 
                 //if the damage reduction is more than the mana than the 
                 //player has left, consume the rest of player's mana

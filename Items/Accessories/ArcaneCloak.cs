@@ -11,7 +11,8 @@ namespace PathOfTerraria.Items.Accessories
         public override void SetStaticDefaults()
         {
             Tooltip.SetDefault("Take a portion of damage from your mana instead of health" +
-                "\nIncrease your magic damage based on how much mana you have left");
+                "\nIncrease your magic damage based on how much mana you have left" +
+                "\nYou cannot gain mana when damaged (e.g. from the Magic Cuffs)");
         }
 
         public override void SetDefaults()
@@ -24,6 +25,7 @@ namespace PathOfTerraria.Items.Accessories
         public override void UpdateEquip(Player player)
         {
             player.GetModPlayer<PathOfTerrariaPlayer>().arcaneCloak = true;
+            player.GetModPlayer<PathOfTerrariaPlayer>().player.magicCuffs = false;
         }
     }
 }
